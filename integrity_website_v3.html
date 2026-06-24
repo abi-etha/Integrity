@@ -1,0 +1,289 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans);color:var(--color-text-primary)}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+nav{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 2rem;border-bottom:0.5px solid var(--color-border-tertiary)}
+.logo{font-size:18px;font-weight:500;letter-spacing:0.04em}
+.logo span{color:#0F6E56}
+.nav-links{display:flex;gap:2rem;font-size:13px}
+.nav-links a{color:var(--color-text-secondary);text-decoration:none}
+.nav-links a:hover{color:var(--color-text-primary)}
+.nav-cta{font-size:13px;padding:6px 16px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);cursor:pointer;background:transparent;color:var(--color-text-primary);font-family:var(--font-sans)}
+.nav-cta:hover{background:var(--color-background-secondary)}
+.hero{padding:5rem 2rem 3.5rem;max-width:680px;margin:0 auto;text-align:center}
+.eyebrow{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#0F6E56;margin-bottom:1.5rem}
+.hero h1{font-size:38px;font-weight:500;line-height:1.2;margin-bottom:2rem}
+.hero-pitch{display:flex;flex-direction:column;gap:0;margin-bottom:2.5rem;border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden}
+.pitch-line{padding:1rem 1.5rem;border-bottom:0.5px solid var(--color-border-tertiary);text-align:left;font-size:15px;line-height:1.6}
+.pitch-line:last-child{border-bottom:none}
+.pitch-line .pl-label{font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--color-text-tertiary);display:block;margin-bottom:4px}
+.pitch-line .pl-text{color:var(--color-text-primary);font-weight:500}
+.pitch-line.accent .pl-text{color:#0F6E56}
+.hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-primary{padding:10px 24px;background:#0F6E56;color:#E1F5EE;border:none;border-radius:var(--border-radius-md);font-size:14px;cursor:pointer;font-family:var(--font-sans)}
+.btn-primary:hover{background:#085041}
+.btn-ghost{padding:10px 24px;background:transparent;color:var(--color-text-primary);border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);font-size:14px;cursor:pointer;font-family:var(--font-sans)}
+.btn-ghost:hover{background:var(--color-background-secondary)}
+.divider{border:none;border-top:0.5px solid var(--color-border-tertiary);margin:0}
+.cost-section{background:var(--color-background-secondary);border-top:0.5px solid var(--color-border-tertiary);border-bottom:0.5px solid var(--color-border-tertiary);padding:3rem 2rem;text-align:center}
+.size-toggle{display:inline-flex;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);overflow:hidden;margin-bottom:2rem}
+.size-btn{padding:6px 20px;font-size:13px;cursor:pointer;background:transparent;border:none;color:var(--color-text-secondary);font-family:var(--font-sans)}
+.size-btn.active{background:var(--color-background-primary);color:var(--color-text-primary);font-weight:500}
+.cost-label{font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-text-tertiary);margin-bottom:0.5rem}
+.cost-counter{font-size:52px;font-weight:500;color:#A32D2D;font-variant-numeric:tabular-nums;line-height:1}
+.cost-sublabel{font-size:13px;color:var(--color-text-secondary);margin-top:0.75rem;margin-bottom:2rem}
+.cost-controls{display:flex;align-items:center;justify-content:center;gap:16px;font-size:13px;color:var(--color-text-secondary);max-width:400px;margin:0 auto 0.5rem}
+.cost-controls input{flex:1}
+.cost-controls span{min-width:80px;text-align:right;font-weight:500;color:var(--color-text-primary)}
+.cost-note{font-size:12px;color:var(--color-text-tertiary);margin-bottom:1.5rem}
+.cost-vs{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:500px;margin:0 auto}
+.cost-card{padding:1rem 1.25rem;border-radius:var(--border-radius-lg);border:0.5px solid var(--color-border-tertiary);background:var(--color-background-primary);text-align:left}
+.clabel{font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--color-text-tertiary);margin-bottom:0.5rem}
+.cval{font-size:22px;font-weight:500}
+.cval.bad{color:#A32D2D}
+.cval.good{color:#0F6E56}
+.csub{font-size:12px;color:var(--color-text-tertiary);margin-top:4px}
+.section{padding:4rem 2rem;max-width:720px;margin:0 auto}
+.section h2{font-size:28px;font-weight:500;margin-bottom:1rem;line-height:1.3}
+.section p{font-size:15px;color:var(--color-text-secondary);line-height:1.75;margin-bottom:1rem}
+.pull-quote{border-left:2px solid #0F6E56;padding:1rem 1.5rem;margin:2rem 0}
+.pull-quote p{font-size:16px;color:var(--color-text-primary);font-style:italic;margin:0;line-height:1.6}
+.two-companies{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:2rem 0}
+.co-card{padding:1.25rem;border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);background:var(--color-background-primary)}
+.co-type{font-size:11px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.75rem;font-weight:500}
+.co-type.knows{color:#854F0B}
+.co-type.doesnt{color:#A32D2D}
+.co-card p{font-size:13px;color:var(--color-text-secondary);line-height:1.65;margin:0}
+.co-card .co-pitch{font-size:13px;color:var(--color-text-primary);font-weight:500;margin-top:0.75rem;padding-top:0.75rem;border-top:0.5px solid var(--color-border-tertiary)}
+.mindset-section{padding:4rem 2rem;background:var(--color-background-secondary);border-top:0.5px solid var(--color-border-tertiary);border-bottom:0.5px solid var(--color-border-tertiary)}
+.mindset-inner{max-width:720px;margin:0 auto}
+.mindset-inner h2{font-size:28px;font-weight:500;margin-bottom:1rem}
+.mindset-inner p{font-size:15px;color:var(--color-text-secondary);line-height:1.75;margin-bottom:1rem}
+.mechanism-line{text-align:center;padding:1.5rem;margin:1.5rem 0;border-top:0.5px solid var(--color-border-tertiary);border-bottom:0.5px solid var(--color-border-tertiary)}
+.mechanism-line p{font-size:17px;font-weight:500;color:#0F6E56;margin:0;font-style:italic}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:12px;margin-top:2rem}
+.scard{padding:1.25rem;border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);background:var(--color-background-primary)}
+.stier{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#0F6E56;margin-bottom:0.5rem}
+.sname{font-size:16px;font-weight:500;margin-bottom:0.5rem}
+.sdesc{font-size:13px;color:var(--color-text-secondary);line-height:1.6}
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-top:2rem}
+.stat{padding:1rem;background:var(--color-background-secondary);border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary);text-align:center}
+.stat-num{font-size:26px;font-weight:500;color:#0F6E56}
+.stat-label{font-size:12px;color:var(--color-text-secondary);margin-top:4px;line-height:1.4}
+.steps{display:flex;flex-direction:column;margin-top:2rem}
+.step{display:flex;gap:1.5rem;padding-bottom:2rem;position:relative}
+.step-num{width:32px;height:32px;border-radius:50%;border:0.5px solid #0F6E56;display:flex;align-items:center;justify-content:center;font-size:13px;color:#0F6E56;flex-shrink:0;background:var(--color-background-primary)}
+.step-line{position:absolute;left:15px;top:32px;bottom:0;width:0.5px;background:var(--color-border-tertiary)}
+.step:last-child .step-line{display:none}
+.step-content strong{display:block;font-size:15px;font-weight:500;margin-bottom:4px;padding-top:4px}
+.step-content span{font-size:13px;color:var(--color-text-secondary);line-height:1.6}
+.cta-section{padding:5rem 2rem;text-align:center;max-width:600px;margin:0 auto}
+.cta-section h2{font-size:28px;font-weight:500;margin-bottom:1rem;line-height:1.3}
+.cta-section p{font-size:15px;color:var(--color-text-secondary);margin-bottom:2rem;line-height:1.7}
+.cta-note{font-size:12px;color:var(--color-text-tertiary);margin-top:1rem}
+footer{border-top:0.5px solid var(--color-border-tertiary);padding:2rem;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--color-text-tertiary);flex-wrap:wrap;gap:8px}
+@media(max-width:500px){.two-companies{grid-template-columns:1fr}.hero h1{font-size:28px}}
+</style>
+
+<h2 class="sr-only">Integrity — independent workplace investigation and culture audit firm for boards and audit committees</h2>
+
+<nav>
+  <div class="logo">INTEGR<span>I</span>TY</div>
+  <div class="nav-links">
+    <a href="#">How it works</a>
+    <a href="#">Services</a>
+    <a href="#">For boards</a>
+    <a href="#">Independence</a>
+  </div>
+  <button class="nav-cta">Request a consultation</button>
+</nav>
+
+<div class="hero">
+  <div class="eyebrow">Independent. Board-directed. Structurally sound.</div>
+  <h1>Your HR department cannot independently investigate itself.</h1>
+  <div class="hero-pitch">
+    <div class="pitch-line">
+      <span class="pl-label">The problem</span>
+      <span class="pl-text">Your HR department cannot independently investigate itself.</span>
+    </div>
+    <div class="pitch-line">
+      <span class="pl-label">The offer</span>
+      <span class="pl-text">We give leadership the infrastructure to act on what they already know.</span>
+    </div>
+    <div class="pitch-line accent">
+      <span class="pl-label">The mechanism</span>
+      <span class="pl-text">Make integrity the path of least resistance. Make suppression structurally irrational.</span>
+    </div>
+  </div>
+  <div class="hero-actions">
+    <button class="btn-primary" onclick="document.getElementById('cost').scrollIntoView({behavior:'smooth'})">See the liability math</button>
+    <button class="btn-ghost" onclick="document.getElementById('mindset').scrollIntoView({behavior:'smooth'})">The bigger picture</button>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="cost-section" id="cost">
+  <div class="eyebrow" style="margin-bottom:1rem">The liability math</div>
+  <div class="size-toggle">
+    <button class="size-btn active" id="btn-mid" onclick="setMode('mid')">Mid-market</button>
+    <button class="size-btn" id="btn-ent" onclick="setMode('enterprise')">Enterprise</button>
+  </div>
+  <div class="cost-label" id="cost-label">Estimated exposure per unresolved incident</div>
+  <div class="cost-counter" id="counter">$350,000</div>
+  <div class="cost-sublabel" id="cost-sub">defense fees + settlement — per incident, mid-market average</div>
+  <div class="cost-controls">
+    <label for="incidents" id="slider-label">Incidents per year</label>
+    <input type="range" id="incidents" min="1" max="20" value="3" step="1">
+    <span id="inc-out">3</span>
+  </div>
+  <div class="cost-note" id="cost-note">Source: EEOC data + Norton Rose Fulbright 2025 litigation survey</div>
+  <div class="cost-vs">
+    <div class="cost-card">
+      <div class="clabel">Without Integrity</div>
+      <div class="cval bad" id="without-val">$1,050,000</div>
+      <div class="csub" id="without-sub">estimated annual exposure</div>
+    </div>
+    <div class="cost-card">
+      <div class="clabel">Integrity retainer</div>
+      <div class="cval good" id="integrity-val">$60K–$120K</div>
+      <div class="csub" id="integrity-sub">per year, all tiers</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="eyebrow">The problem</div>
+  <h2>HR protects the company. That's not a bug — it's the design.</h2>
+  <p>Human resources reports to the company. Its budget, headcount, and leadership depend on the company. When an employee reports abuse, HR's institutional incentive is to protect the organization — not investigate it. This is a structural failure baked into every standard HR model.</p>
+  <p>The result: abuse goes undocumented, retaliation compounds liability, and boards are the last to know — and the first to be held accountable. 99% of Fortune 500 companies have paid out at least one harassment or discrimination settlement since 2000. That is not a statistic. That is your entire peer group pre-qualified.</p>
+  <div class="pull-quote">
+    <p>"The top 10 discrimination class action settlements totaled $356.8M in 2024, $762M in 2023, and $597M in 2022. The trajectory is not improving. 34% of corporate counselors reported an increase in employment disputes in 2024 — with discrimination and harassment as the fastest-growing concern."</p>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="mindset-section" id="mindset">
+  <div class="mindset-inner">
+    <div class="eyebrow">The bigger picture</div>
+    <h2>There are two types of companies Integrity serves.</h2>
+    <div class="two-companies">
+      <div class="co-card">
+        <div class="co-type knows">The first type already knows.</div>
+        <p>They have seen the complaints. They have read the HR summaries. They have made the call to protect the company and gone home that night feeling it. They do not lack integrity — they lack infrastructure.</p>
+        <div class="co-pitch">For them, the pitch is permission.</div>
+      </div>
+      <div class="co-card">
+        <div class="co-type doesnt">The second type doesn't know yet.</div>
+        <p>But the data does. Wynn Resorts paid $70M. Google paid $50M. Disney settled 7,000 claims for $43M. By the time they find out the hard way, the headline has already written itself.</p>
+        <div class="co-pitch">For them, the pitch is prevention.</div>
+      </div>
+    </div>
+    <div class="mechanism-line">
+      <p>Make integrity the path of least resistance. Make suppression structurally irrational.</p>
+    </div>
+    <p>Integrity does not presume to teach values. It assumes most leaders already hold them. The real tragedy is not that bad actors exist — it is that capable, often well-intentioned leaders are placed inside systems that punish foresight and reward short-term protection.</p>
+    <p>Our role is to redesign the decision environment. Truth cheaper than concealment. Accountability more rational than cover-up. Doing right by people strengthening — rather than threatening — organizational resilience.</p>
+    <p>Integrity gives leadership a legitimate, structured path to get the truth without putting themselves in the crossfire. For every board that has ever wanted to do the right thing and had no infrastructure to do it with — Integrity is that infrastructure.</p>
+    <p style="font-weight:500;color:var(--color-text-primary);margin-top:1.5rem">We are not building a punisher. We are building aligned courage infrastructure.</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="eyebrow">For audit committees</div>
+  <h2>Your fiduciary duty requires independent visibility. Internal processes cannot provide it.</h2>
+  <p style="font-size:15px;color:var(--color-text-secondary);line-height:1.75;margin-bottom:1.5rem">Audit committee members face personal liability for oversight failures in culture and harassment matters. Integrity gives you a documented, independent record that you took reasonable corrective action — before the EEOC filing, not after.</p>
+  <div class="stat-row">
+    <div class="stat"><div class="stat-num">72hrs</div><div class="stat-label">Investigator deployment on Tier 1 engagements</div></div>
+    <div class="stat"><div class="stat-num">0</div><div class="stat-label">Reports routed through HR or executive leadership</div></div>
+    <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Findings delivered as written — unalterable by client request</div></div>
+    <div class="stat"><div class="stat-num">6</div><div class="stat-label">Stage suppression protocol — makes burial cost more than truth</div></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+  <div class="eyebrow">Services</div>
+  <h2>Four tiers. One reporting line — your board.</h2>
+  <div class="services-grid">
+    <div class="scard"><div class="stier">Tier 1</div><div class="sname">Rapid response investigation</div><div class="sdesc">Deployed within 72 hours. Independent investigators, board-only reporting, full findings with Action & Resolution Roadmap. $25K–$75K per engagement.</div></div>
+    <div class="scard"><div class="stier">Tier 2</div><div class="sname">Culture audit</div><div class="sdesc">Systematic review of culture, HR effectiveness, and policy-behavior gaps. Culture Risk Index delivered to audit committee. $15K–$40K annually.</div></div>
+    <div class="scard"><div class="stier">Tier 3</div><div class="sname">Structural reform</div><div class="sdesc">Implementation of post-audit recommendations. Policy redesign, reporting structure reform, governance updates. Separate personnel from investigation team.</div></div>
+    <div class="scard"><div class="stier">Tier 4</div><div class="sname">Ongoing monitoring</div><div class="sdesc">Quarterly culture metrics, anonymous reporting channel, implementation dashboard, early warning alerts. $5K–$10K/month retainer.</div></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+  <div class="eyebrow">Independence</div>
+  <h2>Why Integrity stays independent — structurally, not just contractually.</h2>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-line"></div><div class="step-content"><strong>Contract signed with the audit committee — not HR</strong><span>Every engagement is retained directly by the board's audit committee. A secondary board contact is named at signing before the investigation begins — not when pressure starts.</span></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-line"></div><div class="step-content"><strong>Findings are unalterable after evidence close</strong><span>No client request can change findings once evidence collection is complete. Attempts to do so trigger the suppression protocol automatically.</span></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-line"></div><div class="step-content"><strong>Suppression is structurally irrational</strong><span>Our 6-stage suppression protocol ends with all independent directors notified in writing, full documentation attached, and the board contractually required to respond. The burden of suppression exceeds the burden of truth.</span></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-line"></div><div class="step-content"><strong>Obstruction is logged and becomes evidence</strong><span>Missing documents, sudden personnel changes, access delays — all timestamped from day one. When the fog rolls in after an investigation starts, we log it. The pattern is the finding.</span></div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-line"></div><div class="step-content"><strong>Integrity audits itself</strong><span>5-year investigator rotation. Investigation and consulting personnel separated by policy. A percentage of all engagements independently reviewed by an external ethics panel annually — results published.</span></div></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="cta-section">
+  <div class="eyebrow" style="text-align:center;margin-bottom:1rem">Get started</div>
+  <h2>The conversation is confidential. The engagement is optional. The liability is not.</h2>
+  <p>Speak with an Integrity principal directly. We work with audit committee chairs and general counsel — not HR departments.</p>
+  <button class="btn-primary" style="font-size:15px;padding:12px 32px" onclick="sendPrompt('Design the Integrity confidential inquiry form — fields, logic, and tone for a board-level audience')">Request a confidential consultation ↗</button>
+  <div class="cta-note">All initial consultations are confidential and carry no obligation.</div>
+</div>
+
+<footer>
+  <div class="logo" style="font-size:14px">INTEGR<span style="color:#0F6E56">I</span>TY</div>
+  <div>Independent workplace investigations — board-directed.</div>
+  <div>© 2026 Integrity</div>
+</footer>
+
+<script>
+let mode='mid';
+function fmt(n){if(n>=1000000)return'$'+(n/1000000).toFixed(1)+'M';return'$'+Math.round(n).toLocaleString()}
+function setMode(m){
+  mode=m;
+  document.getElementById('btn-mid').classList.toggle('active',m==='mid');
+  document.getElementById('btn-ent').classList.toggle('active',m==='enterprise');
+  if(m==='enterprise'){
+    document.getElementById('cost-label').textContent='Estimated class action exposure per systemic failure';
+    document.getElementById('cost-sub').textContent='legal fees + settlement + reputation damage — enterprise scale';
+    document.getElementById('slider-label').textContent='Systemic failures per 5 years';
+    document.getElementById('cost-note').textContent='Source: Lexology Class Action Review 2025 — top 10 discrimination settlements totaled $356.8M in 2024';
+    document.getElementById('integrity-val').textContent='$250K–$500K';
+    document.getElementById('integrity-sub').textContent='per year, enterprise program';
+    document.getElementById('without-sub').textContent='estimated class action exposure';
+    document.getElementById('incidents').max=10;
+    document.getElementById('incidents').value=2;
+  } else {
+    document.getElementById('cost-label').textContent='Estimated exposure per unresolved incident';
+    document.getElementById('cost-sub').textContent='defense fees + settlement — per incident, mid-market average';
+    document.getElementById('slider-label').textContent='Incidents per year';
+    document.getElementById('cost-note').textContent='Source: EEOC data + Norton Rose Fulbright 2025 litigation survey';
+    document.getElementById('integrity-val').textContent='$60K–$120K';
+    document.getElementById('integrity-sub').textContent='per year, all tiers';
+    document.getElementById('without-sub').textContent='estimated annual exposure';
+    document.getElementById('incidents').max=20;
+    document.getElementById('incidents').value=3;
+  }
+  update();
+}
+function update(){
+  const inc=parseInt(document.getElementById('incidents').value);
+  document.getElementById('inc-out').textContent=inc;
+  const rate=mode==='enterprise'?8000000:350000;
+  const total=inc*rate;
+  document.getElementById('counter').textContent=fmt(total);
+  document.getElementById('without-val').textContent=fmt(total);
+}
+document.getElementById('incidents').addEventListener('input',update);
+update();
+</script>
